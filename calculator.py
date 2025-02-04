@@ -1,4 +1,5 @@
 import pickle    
+
 class Calculator: 
     data = []
     average = 0
@@ -13,10 +14,11 @@ class Calculator:
     def add(self,data):
         self.data.append(data)
 
-    def remove(self,name):
+    def remove(self, name):
         for data in self.data: 
             if(data['name'] == name):
                 self.data.remove(data)
+                return
     
     def calculate(self):
         totalScore = 0
