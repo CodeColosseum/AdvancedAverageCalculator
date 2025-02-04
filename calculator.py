@@ -1,3 +1,4 @@
+import pickle    
 class Calculator: 
     data = []
     average = 0
@@ -44,3 +45,8 @@ class Calculator:
 
     def reset(self):
         self.data = []
+    
+    def save(self, filePath):
+        with open(filePath + '.pkl', 'wb') as f:
+            pickle.dump(self.data, f, pickle.HIGHEST_PROTOCOL)
+
