@@ -41,3 +41,6 @@ class Calculator:
         self.calculate()
         lastRow = "all" + " " * (self.maxNameLength-3) + f" {self.average} {self.coefficient}"
         print(lastRow)
+
+    def reset(self):
+        self.data = []
