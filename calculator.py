@@ -50,3 +50,11 @@ class Calculator:
         with open(filePath + '.pkl', 'wb') as f:
             pickle.dump(self.data, f, pickle.HIGHEST_PROTOCOL)
 
+    def load(self, filePath):
+        try:
+            with open(filePath + '.pkl', 'rb') as f:
+                self.data = pickle.load(f)
+        except FileNotFoundError:
+            self.data = []
+
+        
