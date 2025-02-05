@@ -1,3 +1,5 @@
+import pickle    
+
 class Calculator: 
     data = []
     average = 0
@@ -12,10 +14,11 @@ class Calculator:
     def add(self,data):
         self.data.append(data)
 
-    def remove(self,name):
+    def remove(self, name):
         for data in self.data: 
             if(data['name'] == name):
                 self.data.remove(data)
+                return
     
     def calculate(self):
         totalScore = 0
@@ -41,3 +44,19 @@ class Calculator:
         self.calculate()
         lastRow = "all" + " " * (self.maxNameLength-3) + f" {self.average} {self.coefficient}"
         print(lastRow)
+
+    def reset(self):
+        self.data = []
+    
+    def save(self, filePath):
+        with open(filePath + '.pkl', 'wb') as f:
+            pickle.dump(self.data, f, pickle.HIGHEST_PROTOCOL)
+
+    def load(self, filePath):
+        try:
+            with open(filePath + '.pkl', 'rb') as f:
+                self.data = pickle.load(f)
+        except FileNotFoundError:
+            self.data = []
+
+        
